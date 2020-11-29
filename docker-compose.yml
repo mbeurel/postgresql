@@ -17,9 +17,10 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.tcp.routers.postgres.rule=HostSNI(`*`)"
-      - "traefik.tcp.services.postgres.loadbalancer.server.port=5432"
       - "traefik.tcp.routers.postgres.service=postgres"
       - "traefik.tcp.routers.postgres.tls=false"
+      - "traefik.tcp.services.postgres.loadbalancer.server.port=postgresql"
+      - "traefik.tcp.routers.postgres.entryPoints=postgresql"
     environment:
       POSTGRES_PASSWORD: "${POSTGRESQL_PASSWORD}"
       TZ: "${POSTGRESQL_TZ}"
