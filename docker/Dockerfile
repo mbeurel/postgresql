@@ -7,8 +7,8 @@ ARG GROUP_ID
 
 RUN userdel -f postgres &&\
     if getent group postgres ; then groupdel postgres; fi &&\
-    groupadd -g ${USER_ID} postgres &&\
-    useradd -l -u ${GROUP_ID} -g postgres -G sudo postgres -s /bin/bash &&\
+    groupadd -g ${GROUP_ID} postgres &&\
+    useradd -l -u ${USER_ID} -g postgres -G sudo postgres -s /bin/bash &&\
     install -d -m 0755 -o postgres -g postgres /var/lib/postgresql
 
 

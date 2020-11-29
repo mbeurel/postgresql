@@ -16,8 +16,7 @@ services:
       - "${POSTGRESQL_PATH}:/var/lib/postgresql/data"
     labels:
       - "traefik.enable=true"
-      - "traefik.tcp.routers.postgresql.rule=HostSNI(`*`)"
-      - "traefik.tcp.routers.postgresql.entryPoints=postgresql"
+      - "traefik.tcp.routers.postgres.rule=HostSNI(`*`)"
       - "traefik.tcp.services.postgres.loadbalancer.server.port=5432"
       - "traefik.tcp.routers.postgres.service=postgres"
       - "traefik.tcp.routers.postgres.tls=false"
